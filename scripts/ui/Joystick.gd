@@ -2,7 +2,7 @@ extends TouchScreenButton
 
 var drag = -1
 
-var joystick_middle = (normal.get_size() / 2) * scale
+var joystick_middle = (normal.get_size() / 2)
 
 var thres: float = 0.5
 var accel: float = 20.0
@@ -10,9 +10,8 @@ var bounds: float = 10.0
 
 func _process(delta):
 	if drag == -1:
-		var pos_dif = global_position.direction_to(get_parent().global_position)
-		if pos_dif.x > thres or pos_dif.x < thres:
-			position += pos_dif * accel * delta
+		var pos_dif = (Vector2(0, 0) - joystick_middle) - position
+		position += pos_dif
 
 
 func _input(event):
