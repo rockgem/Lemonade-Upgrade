@@ -4,7 +4,7 @@ extends Control
 
 
 func _ready():
-	$AdMob.show_banner()
+	pass
 
 
 func _on_Interact_pressed():

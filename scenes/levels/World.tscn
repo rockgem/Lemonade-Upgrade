@@ -105,7 +105,7 @@ position = Vector2( 224, 80 )
 dialogs = [ "Here take this seeds.", "Grow them for profits!", "My back hurts." ]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 5.0
 autostart = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
