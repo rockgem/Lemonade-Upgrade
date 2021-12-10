@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/HitCtrl - Happy Pixie Town.mp3-5c6ca14e843ee485c87742e682990845.mp3str"
+
+[deps]
+
+source_file="res://music/bgm/HitCtrl - Happy Pixie Town.mp3"
+dest_files=[ "res://.import/HitCtrl - Happy Pixie Town.mp3-5c6ca14e843ee485c87742e682990845.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

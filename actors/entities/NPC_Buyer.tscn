@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://actors/entities/NPC.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/sprites/boy_sheet.png" type="Texture" id=2]
+[ext_resource path="res://scripts/entities/NPCBuyer.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "run"
+length = 0.5
+step = 0.02
+
+[node name="NPC" instance=ExtResource( 1 )]
+npc_type = 1
+dialogs = [ "I want some lemonade!!!!", "Lemonade rules!", "I'm so thirsty." ]
+
+[node name="BehaviorScript" type="Node" parent="." index="0"]
+script = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="2"]
+texture = ExtResource( 2 )
+hframes = 7
+
+[node name="AnimationWalkPlayer" type="AnimationPlayer" parent="." index="7"]
+anims/run = SubResource( 1 )

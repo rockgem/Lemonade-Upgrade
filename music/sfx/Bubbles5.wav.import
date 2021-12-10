@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Bubbles5.wav-674ad7688765a17d3e98eec820c81626.sample"
+
+[deps]
+
+source_file="res://music/sfx/Bubbles5.wav"
+dest_files=[ "res://.import/Bubbles5.wav-674ad7688765a17d3e98eec820c81626.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
