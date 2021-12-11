@@ -17,7 +17,7 @@ func _process(delta):
 func _input(event):
 	if event is InputEventScreenDrag or (event is InputEventScreenTouch and event.is_pressed()):
 		
-		var event_from_center = (event.position - get_parent().global_position).length()
+		var event_from_center = (event.position - get_parent().position).length()
 	
 		if event_from_center <= bounds or event.get_index() == drag:
 			set_global_position(event.position - joystick_middle)
@@ -34,6 +34,7 @@ func get_button_pos():
 	return position - joystick_middle
 
 func get_value():
-	return get_button_pos().normalized()
+	if drag != -1:
+		return get_button_pos().normalized()
 	
 	return Vector2(0 ,0)

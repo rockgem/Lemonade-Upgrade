@@ -1,9 +1,11 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://assets/sprites/boy_sheet.png" type="Texture" id=1]
 [ext_resource path="res://scripts/entities/Player.gd" type="Script" id=2]
 [ext_resource path="res://scenes/UI.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/actoras/Camera2D.gd" type="Script" id=4]
+[ext_resource path="res://resources/styles/panel_3.tres" type="StyleBox" id=5]
+[ext_resource path="res://resources/styles/font.tres" type="DynamicFont" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 7.61131
@@ -191,6 +193,35 @@ graph_offset = Vector2( -69, -63 )
 
 [sub_resource type="CircleShape2D" id=20]
 
+[sub_resource type="Animation" id=21]
+resource_name = "dialog_pop"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Popup:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Popup:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.09, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0.1 ), Vector2( 1, 1.2 ), Vector2( 1, 1 ) ]
+}
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
@@ -234,3 +265,26 @@ collision_mask = 114
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 shape = SubResource( 20 )
+
+[node name="Popup" type="Label" parent="."]
+visible = false
+margin_left = -37.0
+margin_top = -50.0
+margin_right = 38.0
+margin_bottom = -18.0
+grow_vertical = 0
+rect_scale = Vector2( 1, 0.1 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/dialog_pop = SubResource( 21 )
+
+[node name="DialogTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="DialogTimer" to="." method="_on_DialogTimer_timeout"]

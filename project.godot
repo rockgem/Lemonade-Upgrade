@@ -36,6 +36,8 @@ GameManager="*res://scripts/globals/GameManager.gd"
 Music="*res://music/bgm/Music.tscn"
 BubbleSfx="*res://music/sfx/BubbleSFX.tscn"
 DirtSfx="*res://music/sfx/DirtSFX.tscn"
+BellSfx="*res://music/sfx/BellSFX.tscn"
+GainSfx="*res://music/sfx/GainSFX.tscn"
 
 [display]
 
