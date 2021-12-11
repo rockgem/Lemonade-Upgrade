@@ -7,7 +7,12 @@ onready var exit = $BuyerExitPoint.global_position
 func _ready():
 	var top_left = $TopLeft.global_position
 	var bottom_right = $BottomRight.global_position
-	GameManager.emit_signal("camera_limits_set", top_left, bottom_right)
+#	GameManager.emit_signal("camera_limits_set", top_left, bottom_right)
+#
+#	$YSort/Player/Camera2D.limit_top = top_left.x
+#	$YSort/Player/Camera2D.limit_left = top_left.y
+#	$YSort/Player/Camera2D.limit_bottom = bottom_right.y
+#	$YSort/Player/Camera2D.limit_right = bottom_right.x
 
 
 

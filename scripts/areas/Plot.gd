@@ -22,14 +22,15 @@ func _physics_process(delta):
 
 
 func interact(node):
-	if GameManager.player_seeds <= 0:
+	if GameManager.seed_data.amount <= 0:
 		GameManager.emit_signal("player_dialog_pop", "No seeds to plant")
 		return
 	
 	if !is_planted:
 		$"/root/DirtSfx".play()
 		$SeedSprite.show()
-		GameManager.player_seeds -= 1
+		GameManager.seed_data.amount -= 1
+		GameManager.emit_signal("gain_item")
 		is_planted = true
 		set_physics_process(true)
 	else:

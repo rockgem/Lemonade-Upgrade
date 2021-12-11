@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://admob-lib/admob.gd"
 }, {
+"base": "Resource",
+"class": "Item",
+"language": "GDScript",
+"path": "res://resources/items/ItemBase.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "NPC",
 "language": "GDScript",
@@ -21,6 +26,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "AdMob": "res://admob-lib/icon.png",
+"Item": "",
 "NPC": ""
 }
 

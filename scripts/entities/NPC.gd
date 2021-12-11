@@ -32,8 +32,8 @@ func _physics_process(delta):
 func interact(node):
 	if GameManager.free_seeds_available:
 		if npc_type == NPC_TYPE.FATHER:
-			GameManager.emit_signal("gain_seed", 3)
-			GameManager.player_seeds += 3
+			GameManager.seed_data.amount += 3
+			GameManager.emit_signal("gain_item")
 			GameManager.free_seeds_available = false
 	
 	
