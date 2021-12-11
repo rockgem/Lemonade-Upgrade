@@ -13,8 +13,12 @@ func customer_queue():
 
 func interact(node):
 	if !GameManager.available_stall:
-		GameManager.player_gold += 5
-		GameManager.emit_signal("gain_item")
-		$CoinSFX.play()
-		$CustomerQueueing.hide()
-		GameManager.available_stall = true
+		if GameManager.lemon_data.amount > 0:
+			GameManager.player_gold += 5
+			GameManager.lemon_data.amount -= 1
+			GameManager.emit_signal("gain_item")
+			$CoinSFX.play()
+			$CustomerQueueing.hide()
+			GameManager.available_stall = true
+		else:
+			GameManager.emit_signal("player_dialog_pop", "No lemons to make lemonade")

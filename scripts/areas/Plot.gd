@@ -22,7 +22,7 @@ func _physics_process(delta):
 
 
 func interact(node):
-	if GameManager.seed_data.amount <= 0:
+	if GameManager.seed_data.amount <= 0 and !is_planted:
 		GameManager.emit_signal("player_dialog_pop", "No seeds to plant")
 		return
 	
@@ -65,6 +65,8 @@ func pick_lemon():
 	if lemons > 0:
 		$Lemons.get_child(lemons - 1).hide()
 		lemons -= 1
+		GameManager.lemon_data.amount += 1
+		GameManager.emit_signal("gain_item")
 		get_node("/root/GainSfx").play()
 		
 		if lemons < 3:
