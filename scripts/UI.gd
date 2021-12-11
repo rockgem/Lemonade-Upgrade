@@ -7,6 +7,8 @@ func _ready():
 	GameManager.connect("gain_item", self, "update_inventory")
 	
 	update_inventory()
+	
+	$AdMob.show_banner()
 
 
 func _on_Interact_pressed():

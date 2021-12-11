@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resources/styles/panel_2.tres" type="StyleBox" id=1]
+[ext_resource path="res://assets/icons/seeds.png" type="Texture" id=2]
+[ext_resource path="res://resources/styles/font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scripts/ui/ItemSlot.gd" type="Script" id=4]
+
+[node name="ItemSlot" type="Panel"]
+margin_right = 16.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+custom_styles/panel = ExtResource( 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = 4.0
+margin_top = 9.0
+margin_right = 15.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 3 )
+text = "99"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
