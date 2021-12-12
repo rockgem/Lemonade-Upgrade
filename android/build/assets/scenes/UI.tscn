@@ -26,10 +26,12 @@ __meta__ = {
 [node name="AdMob" type="Node" parent="."]
 script = ExtResource( 8 )
 banner_id = "ca-app-pub-3940256099942544/6300978111"
+interstitial_id = "ca-app-pub-3940256099942544/1033173712"
 rewarded_id = "ca-app-pub-3940256099942544/5224354917"
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 39, 148 )
+position = Vector2( 46.1433, 134.507 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 
 [node name="Joystick" type="TouchScreenButton" parent="Sprite"]
@@ -39,7 +41,8 @@ shape = SubResource( 1 )
 script = ExtResource( 3 )
 
 [node name="Interact" parent="." instance=ExtResource( 4 )]
-position = Vector2( 293, 153 )
+position = Vector2( 271.787, 132.848 )
+scale = Vector2( 2, 2 )
 action = "ui_select"
 
 [node name="InventoryPanel" type="Panel" parent="."]
