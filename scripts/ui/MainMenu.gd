@@ -2,7 +2,7 @@ extends Control
 
 
 func _ready():
-	$AdMob.show_banner()
+	$AdMob.load_banner()
 
 
 func _on_Play_pressed():
@@ -12,3 +12,7 @@ func _on_Play_pressed():
 
 func _on_Quit_pressed():
 	get_tree().quit()
+
+
+func _exit_tree():
+	$AdMob.hide_banner()

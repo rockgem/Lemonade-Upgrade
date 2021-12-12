@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/ui/circle_32x32.png" type="Texture" id=1]
 [ext_resource path="res://assets/ui/circle_16x16.png" type="Texture" id=2]
@@ -10,9 +10,33 @@
 [ext_resource path="res://admob-lib/admob.gd" type="Script" id=8]
 [ext_resource path="res://resources/styles/font.tres" type="DynamicFont" id=9]
 [ext_resource path="res://assets/icons/lemon.png" type="Texture" id=10]
+[ext_resource path="res://resources/styles/button_normal.tres" type="StyleBox" id=11]
+[ext_resource path="res://resources/styles/button_pressed.tres" type="StyleBox" id=12]
+[ext_resource path="res://scripts/ui/RewardPanel.gd" type="Script" id=13]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "reward_anim"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Reward:rect_scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.6, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
@@ -113,7 +137,120 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Reward" type="TextureButton" parent="."]
+margin_left = 283.751
+margin_top = 3.67567
+margin_right = 315.751
+margin_bottom = 35.6757
+rect_scale = Vector2( 1.00854, 1.00854 )
+rect_pivot_offset = Vector2( 16, 16 )
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "reward_anim"
+anims/reward_anim = SubResource( 2 )
+
+[node name="RewardPanel" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 65.0
+margin_top = 13.0
+margin_right = -66.0
+margin_bottom = -6.0
+custom_styles/panel = ExtResource( 6 )
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="RewardPanel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -63.5
+margin_top = 13.0
+margin_right = 63.5
+margin_bottom = 27.0
+custom_fonts/font = ExtResource( 9 )
+text = "Watch a video and get rewards:"
+align = 1
+
+[node name="Watch" type="Button" parent="RewardPanel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -25.5
+margin_top = -85.0
+margin_right = 26.5
+margin_bottom = -65.0
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = ExtResource( 11 )
+custom_fonts/font = ExtResource( 9 )
+text = "Watch"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Close" type="Button" parent="RewardPanel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -25.5
+margin_top = -63.0
+margin_right = 26.5
+margin_bottom = -43.0
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = ExtResource( 11 )
+custom_fonts/font = ExtResource( 9 )
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="RewardPanel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -19.5
+margin_top = 27.0
+margin_right = 20.5
+margin_bottom = 67.0
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Amount" type="Label" parent="RewardPanel/TextureRect"]
+margin_left = 17.0
+margin_top = 26.0
+margin_right = 43.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 9 )
+text = "999"
+align = 2
+
+[connection signal="rewarded" from="AdMob" to="RewardPanel" method="_on_AdMob_rewarded"]
+[connection signal="rewarded_video_failed_to_load" from="AdMob" to="RewardPanel" method="_on_AdMob_rewarded_video_failed_to_load"]
 [connection signal="pressed" from="Interact" to="." method="_on_Interact_pressed"]
+[connection signal="pressed" from="Reward" to="." method="_on_Reward_pressed"]
+[connection signal="visibility_changed" from="RewardPanel" to="RewardPanel" method="_on_RewardPanel_visibility_changed"]
+[connection signal="pressed" from="RewardPanel/Watch" to="RewardPanel" method="_on_Watch_pressed"]
+[connection signal="pressed" from="RewardPanel/Close" to="RewardPanel" method="_on_Close_pressed"]
 
 [editable path="Interact"]
 [editable path="InventoryPanel/HBoxContainer/ItemSlot"]

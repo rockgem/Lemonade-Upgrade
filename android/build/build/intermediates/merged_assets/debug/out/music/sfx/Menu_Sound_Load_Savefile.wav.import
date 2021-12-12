@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Menu_Sound_Load_Savefile.wav-26dbf656e896f65b4bd9e1a7271a6575.sample"
+
+[deps]
+
+source_file="res://music/sfx/Menu_Sound_Load_Savefile.wav"
+dest_files=[ "res://.import/Menu_Sound_Load_Savefile.wav-26dbf656e896f65b4bd9e1a7271a6575.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
