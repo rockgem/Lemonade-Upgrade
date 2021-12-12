@@ -38,4 +38,5 @@ func _on_AdMob_rewarded_video_failed_to_load(error_code):
 
 func _on_Close_pressed():
 	get_node("/root/BubbleSfx").play()
+	get_parent().get_node("AdMob").load_rewarded_video()
 	hide()

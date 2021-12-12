@@ -16,7 +16,7 @@ func _process(delta):
 		position += pos_dif
 
 
-func _input(event):
+func _unhandled_input(event):
 	if event is InputEventScreenDrag or (event is InputEventScreenTouch and event.is_pressed()):
 		
 		if drag == -1:
