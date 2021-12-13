@@ -15,7 +15,7 @@ func _physics_process(delta):
 		
 		global_translate(dir)
 	else:
-		if GameManager.available_stall:
+		if !GameManager.available_stall:
 			GameManager.emit_signal("customer_queued")
 		
 		is_moving = false

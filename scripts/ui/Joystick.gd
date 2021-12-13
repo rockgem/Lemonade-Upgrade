@@ -19,6 +19,9 @@ func _process(delta):
 func _unhandled_input(event):
 	if event is InputEventScreenDrag or (event is InputEventScreenTouch and event.is_pressed()):
 		
+		if !GameManager.is_on_bounds:
+			return
+		
 		if drag == -1:
 			initial_click_pos = event.position
 			get_parent().position = initial_click_pos

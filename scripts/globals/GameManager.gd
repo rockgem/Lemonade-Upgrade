@@ -9,6 +9,8 @@ signal customer_queued
 signal player_dialog_pop(message)
 signal gain_item(item_resource)
 
+var is_on_bounds = false
+
 var free_seeds_available: bool = true
 var available_stall: bool = true
 

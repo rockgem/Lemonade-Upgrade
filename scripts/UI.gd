@@ -1,6 +1,6 @@
 extends Control
 
-
+var is_on_limit: bool = false
 
 
 func _ready():
@@ -27,3 +27,11 @@ func update_inventory():
 
 func _on_Reward_pressed():
 	$RewardPanel.show()
+
+
+func _on_JoystickLimit_pressed():
+	GameManager.is_on_bounds = true
+
+
+func _on_JoystickLimit_released():
+	GameManager.is_on_bounds = false
