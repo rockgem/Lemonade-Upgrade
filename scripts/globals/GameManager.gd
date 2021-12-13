@@ -8,6 +8,7 @@ signal gain_seed(amount)
 signal customer_queued
 signal player_dialog_pop(message)
 signal gain_item(item_resource)
+signal buyer_reach_point(node)
 
 var is_on_bounds = false
 

@@ -2,6 +2,7 @@ extends Sprite
 
 
 var is_moving: bool = false
+var is_for_stall: bool = false
 var path: PoolVector2Array
 
 
@@ -15,12 +16,13 @@ func _physics_process(delta):
 		
 		global_translate(dir)
 	else:
-		if !GameManager.available_stall:
+		if is_for_stall:
 			GameManager.emit_signal("customer_queued")
 		
 		is_moving = false
 		set_physics_process(false)
-		queue_free()
+		GameManager.emit_signal("buyer_reach_point", self)
+		hide()
 		return
 	
 	if global_position >= path[1]:
