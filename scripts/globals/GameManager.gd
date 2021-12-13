@@ -9,6 +9,7 @@ signal customer_queued
 signal player_dialog_pop(message)
 signal gain_item(item_resource)
 signal buyer_reach_point(node)
+signal buy_show
 
 var is_on_bounds = false
 
@@ -19,8 +20,10 @@ var lemon_data = load("res://resources/items/Lemon.tres")
 var seed_data = load("res://resources/items/Seed.tres")
 
 var player_seeds: int = 0
-var player_gold: int = 0
+var player_gold: int = 900
 var player_items: Array = [seed_data, lemon_data]
+
+var seed_price: int = 50
 
 
 func _ready():

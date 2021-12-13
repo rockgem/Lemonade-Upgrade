@@ -36,6 +36,9 @@ func interact(node):
 			GameManager.emit_signal("gain_item")
 			GameManager.free_seeds_available = false
 	
+	if npc_type == NPC_TYPE.SHOP:
+		GameManager.emit_signal("buy_show")
+	
 	
 	var dir = global_position.direction_to(node.global_position)
 	if dir.x < 0:

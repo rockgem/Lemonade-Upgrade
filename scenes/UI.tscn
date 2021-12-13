@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/ui/circle_32x32.png" type="Texture" id=1]
 [ext_resource path="res://assets/ui/circle_16x16.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://resources/styles/button_normal.tres" type="StyleBox" id=11]
 [ext_resource path="res://resources/styles/button_pressed.tres" type="StyleBox" id=12]
 [ext_resource path="res://scripts/ui/RewardPanel.gd" type="Script" id=13]
+[ext_resource path="res://scripts/ui/ShopPanel.gd" type="Script" id=14]
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 60, 100 )
@@ -251,6 +252,66 @@ custom_fonts/font = ExtResource( 9 )
 text = "999"
 align = 2
 
+[node name="ShopPanel" type="Panel" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -74.0
+margin_top = 73.0
+margin_right = 74.0
+margin_bottom = 133.0
+custom_styles/panel = ExtResource( 6 )
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ShopPanel"]
+anchor_right = 1.0
+margin_left = 15.0
+margin_top = 8.0
+margin_right = -12.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 9 )
+text = "Buy 1 seed for 999 gold?"
+align = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopPanel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -32.0
+margin_top = 23.0
+margin_right = 33.0
+margin_bottom = 57.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buy" type="Button" parent="ShopPanel/VBoxContainer"]
+margin_right = 65.0
+margin_bottom = 15.0
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/normal = ExtResource( 11 )
+custom_fonts/font = ExtResource( 9 )
+text = "Buy"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cancel" type="Button" parent="ShopPanel/VBoxContainer"]
+margin_top = 19.0
+margin_right = 65.0
+margin_bottom = 34.0
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/normal = ExtResource( 11 )
+custom_fonts/font = ExtResource( 9 )
+text = "Cancel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="rewarded" from="AdMob" to="RewardPanel" method="_on_AdMob_rewarded"]
 [connection signal="rewarded_video_failed_to_load" from="AdMob" to="RewardPanel" method="_on_AdMob_rewarded_video_failed_to_load"]
 [connection signal="pressed" from="JoystickLimit" to="." method="_on_JoystickLimit_pressed"]
@@ -260,6 +321,8 @@ align = 2
 [connection signal="visibility_changed" from="RewardPanel" to="RewardPanel" method="_on_RewardPanel_visibility_changed"]
 [connection signal="pressed" from="RewardPanel/Watch" to="RewardPanel" method="_on_Watch_pressed"]
 [connection signal="pressed" from="RewardPanel/Close" to="RewardPanel" method="_on_Close_pressed"]
+[connection signal="pressed" from="ShopPanel/VBoxContainer/Buy" to="ShopPanel" method="_on_Buy_pressed"]
+[connection signal="pressed" from="ShopPanel/VBoxContainer/Cancel" to="ShopPanel" method="_on_Cancel_pressed"]
 
 [editable path="Interact"]
 [editable path="InventoryPanel/HBoxContainer/ItemSlot"]

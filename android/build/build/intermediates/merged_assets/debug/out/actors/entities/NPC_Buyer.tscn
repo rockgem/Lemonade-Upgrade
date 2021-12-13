@@ -1,13 +1,41 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://actors/entities/NPC.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/sprites/boy_sheet.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/girl_sprite.png" type="Texture" id=2]
 [ext_resource path="res://scripts/entities/NPCBuyer.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "run"
-length = 0.5
+length = 0.8
+loop = true
 step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.16, 0.32, 0.48, 0.64, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5, 6 ]
+}
 
 [node name="NPC" instance=ExtResource( 1 )]
 npc_type = 1
@@ -19,6 +47,9 @@ script = ExtResource( 3 )
 [node name="Sprite" parent="." index="2"]
 texture = ExtResource( 2 )
 hframes = 7
+frame = 1
 
 [node name="AnimationWalkPlayer" type="AnimationPlayer" parent="." index="7"]
+autoplay = "run"
+anims/idle = SubResource( 2 )
 anims/run = SubResource( 1 )

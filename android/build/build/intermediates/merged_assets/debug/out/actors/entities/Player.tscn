@@ -255,7 +255,7 @@ parameters/run/blend_position = Vector2( -0.0525503, 0.00775194 )
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, -1 )
 current = true
-smoothing_speed = 3.0
+limit_smoothed = true
 script = ExtResource( 4 )
 
 [node name="PlayerDetector" type="Area2D" parent="."]
@@ -286,5 +286,6 @@ anims/dialog_pop = SubResource( 21 )
 
 [node name="DialogTimer" type="Timer" parent="."]
 wait_time = 2.0
+one_shot = true
 
 [connection signal="timeout" from="DialogTimer" to="." method="_on_DialogTimer_timeout"]

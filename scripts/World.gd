@@ -12,7 +12,7 @@ func _ready():
 	GameManager.emit_signal("camera_limits_set", top_left, bottom_right)
 	GameManager.connect("buyer_reach_point", self, "buyer_append_to_pool")
 	
-	for i in 8:
+	for i in 10:
 		var ins = load("res://actors/entities/Buyer.tscn").instance()
 		ins.hide()
 		
